@@ -22,9 +22,9 @@ public class ZuHe {
     /**
      * 返回的数据是所有的排列情况以及每一种排列的积分情况
      * */
-    public static ArrayList<Card[]> myzuhe(Card[] cards) {
+    public static ArrayList<OneCards[]> myzuhe(Card[] cards) {
         int count = 0;
-        ArrayList<Card[]> cardsArrayList=new ArrayList<>();
+        ArrayList<OneCards[]> cardsArrayList=new ArrayList<>();
         for (int i = 1; i <= cards.length - M + 1; i++) {
             for (int j = i + 1; j <= cards.length - M + 2; j++) {
                 for (int k = j + 1; k <= cards.length - M + 3; k++) {
@@ -43,14 +43,21 @@ public class ZuHe {
                                 int atemp[]=Jundge(jundge);
                                 //符合大小关系并且不是三个都是普通牌
                                 if(atemp[0]==1&&(atemp[1]!=0&&atemp[1]!=2)) {
-                                    /*System.out.println("排列" + (count + 1) + ":" +
+                                    System.out.println("排列" + (count + 1) + ":" +
                                             cards[i - 1].printCard() + "," + cards[j - 1].printCard() + "," +
                                             cards[k - 1].printCard() + "," + left[a - 1].printCard() + "," +
                                             left[b - 1].printCard() + "," + left[c - 1].printCard() + "," +
                                             left1[0].printCard() + "," + left1[1].printCard() + "," +
-                                            left1[2].printCard()+"->score:"+atemp[1]);*/
+                                            left1[2].printCard()+"->score:"+atemp[1]);
                                     System.out.println("积分：\t\t\t"+atemp[2]+",\t\t\t"+atemp[3]+",\t\t\t"+atemp[4]);
-                                    cardsArrayList.add(jundge);
+                                    OneCards[] oneCardses=new OneCards[3];
+                                    oneCardses[0]=new OneCards(new Card[]{jundge[0],jundge[1],jundge[2]});
+                                    oneCardses[0].setJifen(atemp[2]);
+                                    oneCardses[1]=new OneCards(new Card[]{jundge[3],jundge[4],jundge[5]});
+                                    oneCardses[1].setJifen(atemp[3]);
+                                    oneCardses[2]=new OneCards(new Card[]{jundge[6],jundge[7],jundge[8]});
+                                    oneCardses[2].setJifen(atemp[4]);
+                                    cardsArrayList.add(oneCardses);
                                     count++;
                                 }
                             }

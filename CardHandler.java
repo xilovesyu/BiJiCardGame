@@ -38,17 +38,15 @@ public class CardHandler {
         if(cards==null){
             return;
         }
-        OneCards[] oneCards=new OneCards[3];
         for (int j=0;j<9;j++){
             for(int i=0;i<persons.length;i++){
                 //每个人发九张牌,并且第一张第一个人的
                 //第二张第二个人的，依次类推
-
                 persons[i].addCard(cards[j*persons.length+i]);
             }
         }
     }
-    public ArrayList<Card[]> ListAllCount(Person person){
+    public ArrayList<OneCards[]> ListAllCount(Person person){
         return ZuHe.myzuhe(person.getCards());
     }
 }

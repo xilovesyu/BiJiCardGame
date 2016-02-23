@@ -24,7 +24,7 @@ public class Test {
         }
 
         ///列出第一个人的牌的所有可能的组合
-        ArrayList<Card[]> getAllCount=cardHandler.ListAllCount(p[0]);
+        ArrayList<OneCards[]> getAllCount=cardHandler.ListAllCount(p[0]);
 
 
     }
