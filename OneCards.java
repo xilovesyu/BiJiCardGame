@@ -1,5 +1,7 @@
 package com.xi;
 
+import java.util.Arrays;
+
 /**一副牌的简单类，包括三张牌，类型（kind）,积分
  * Created by xijiaxiang on 2016/2/22.
  */
@@ -34,5 +36,10 @@ public class OneCards {
 
     public void setJifen(int jifen) {
         this.jifen = jifen;
+    }
+
+    @Override
+    public String toString() {
+        return Onecards[0].printCard()+","+Onecards[1].printCard()+","+Onecards[2].printCard()+" ";
     }
 }
