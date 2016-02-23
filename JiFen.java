@@ -1,6 +1,6 @@
 package com.xi;
 
-/**may be JiFen like a class
+/**
  * Created by xijiaxiang on 2016/2/22.
  */
 public class JiFen {

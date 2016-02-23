@@ -19,7 +19,9 @@ public class Test {
         ///////////////////////////
         cardHandler.XiCards();
         cardHandler.FaCards(p);
-
+        for (Person m:p) {
+            m.printCard();
+        }
 
         ///列出第一个人的牌的所有可能的组合
         ArrayList<Card[]> getAllCount=cardHandler.ListAllCount(p[0]);
