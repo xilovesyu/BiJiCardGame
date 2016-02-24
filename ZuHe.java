@@ -37,9 +37,11 @@ public class ZuHe {
                                 Card left1[] = SubCard(left, sub1);
                                 //判断是否是个合法的排列
                                 //判断的时候只发送对象数组的副本，保留原来的对象数组
+                                //可以利用card类的clone方法
                                 Card[] jundge = {new Card(cards[i - 1]), new Card(cards[j - 1]), new Card(cards[k - 1]),
                                         new Card(left[a - 1]), new Card(left[b - 1]), new Card(left[c - 1]),
                                         new Card(left1[0]), new Card(left1[1]), new Card(left1[2])};
+
                                 int atemp[]=Jundge(jundge);
                                 //符合大小关系并且不是三个都是普通牌
                                 if(atemp[0]==1&&(atemp[1]!=0&&atemp[1]!=2)) {

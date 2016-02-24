@@ -3,7 +3,7 @@ package com.xi;
 /**simple class;card class
  * Created by xijiaxiang on 2016/2/16.
  */
-public class Card {
+public class Card implements  Cloneable{
     private int Kind;
     private int Num;
     //黑4，梅3，红2，方1，小大王0
@@ -77,13 +77,17 @@ public class Card {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        if (Kind != card.Kind) return false;
-        return Num == card.Num;
+        return Kind == card.Kind && Num == card.Num;
     }
     @Override
     public int hashCode() {
         int result = Kind;
         result = 31 * result + Num;
         return result;
+    }
+
+    @Override
+    protected Card clone() throws CloneNotSupportedException {
+        return (Card) super.clone();
     }
 }
