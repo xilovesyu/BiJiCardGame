@@ -80,8 +80,8 @@ public class ZuHe {
             flag[i] = false;
         }
         for (int i = 0; i < num.length; i++) {
-            for (int j = 0; j < num1.length; j++) {
-                if (num[i].equals(num1[j])) {
+            for (Card aNum1 : num1) {
+                if (num[i].equals(aNum1)) {
                     flag[i] = true;
                 }
             }
@@ -96,7 +96,7 @@ public class ZuHe {
     }
 
     public static int[] Jundge(Card[] temp) {
-        boolean flag = false;
+        boolean flag;
         int [] atemp=new int[5];
         if (temp.length != 9){atemp[0]=0; return atemp;}
         ///得到三副牌
@@ -360,31 +360,19 @@ public class ZuHe {
      * 比较两副牌的方法，这里比较的两副牌必须是相同类型
      * */
     private static boolean CompareTwoCards(Card[] laterCards, Card[] preCards, int kind) {
-        boolean flag = false;
+        boolean flag;
         PaiXuCards(laterCards);
         PaiXuCards(preCards);
         switch (kind) {
             case 5:
-                if (laterCards[0].getNum() >= preCards[0].getNum()) {
-                    flag = true;
-                } else {
-                    flag = false;
-                }
+                flag = laterCards[0].getNum() >= preCards[0].getNum();
                 break;
             case 4:
                 flag = laterCards[2].getNum() >= preCards[2].getNum();
                 break;
             case 3:
             case 0: {
-                if (laterCards[2].getNum() >= preCards[2].getNum()) {
-                    if (laterCards[1].getNum() >= preCards[1].getNum()) {
-                        flag = laterCards[0].getNum() >= preCards[0].getNum();
-                    } else {
-                        flag = false;
-                    }
-                } else {
-                    flag = false;
-                }
+                flag = laterCards[2].getNum() >= preCards[2].getNum() && laterCards[1].getNum() >= preCards[1].getNum() && laterCards[0].getNum() >= preCards[0].getNum();
             }
             break;
             case 2:
@@ -392,16 +380,10 @@ public class ZuHe {
                 break;
             case 1: {//对
                 int duizia = DuiZiAndKaoBei(laterCards)[0];
-                int kaobeia =DuiZiAndKaoBei(laterCards)[1];
+                int kaobeia = DuiZiAndKaoBei(laterCards)[1];
                 int duizib = DuiZiAndKaoBei(preCards)[0];
-                int kaobeib =DuiZiAndKaoBei(preCards)[1];
-                if (duizia > duizib) {
-                    flag = true;
-                } else if (duizia == duizib) {
-                    flag = kaobeia >= kaobeib;
-                } else {
-                    flag = false;
-                }
+                int kaobeib = DuiZiAndKaoBei(preCards)[1];
+                flag = duizia > duizib || duizia == duizib && kaobeia >= kaobeib;
             }
             break;
             default:
